@@ -1,0 +1,27 @@
+{
+  "name": "stripe-migrator",
+  "version": "1.0.0",
+  "description": "Utility to migrate Stripe data to a new Stripe account",
+  "scripts": {
+    "pre-migrate": "node src/index.js",
+    "post-migrate": "node src/index.js",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binarymee/stripe-migration.git"
+  },
+  "keywords": [
+    "binarymee",
+    "stripe",
+    "migration"
+  ],
+  "author": "Balaji C M <reachcmb@gmail.com> (https://binarymee.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binarymee/stripe-migration/issues"
+  },
+  "homepage": "https://github.com/binarymee/stripe-migration#readme",
+  "dependencies": {
+    "stripe": "^6.20.0"
+  }
+}
