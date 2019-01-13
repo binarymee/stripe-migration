@@ -10,12 +10,19 @@ module.exports.all = async (stripe, options = {}) => {
   if (options.type || options.callback) {
     throw new Error('Please pass the necessary options for list.all');
   }
-  let data = { has_more: true };
+  let fetchResult = { has_more: true };
   // Loop till has_more is false
-  while (data.has_more) {
-    // Fetches the 100 data every turn
-    data = await stripe[options.type].list({ limit: 100, ...(options.args || {}) });
+  while (fetchResult.has_more) {
+    const stripeOptions = { 
+      limit: 100, // Fetches the 100 data every turn
+      ...(options.args || {}) //Custom arguments
+    };
+    //This is to fetch after the last fetched item
+    if (fetchResult.data) {
+      stripeOptions.starting_after = fetchResult.data[fetchResult.data.length - 1].id;
+    }
+    fetchResult = await stripe[options.type].list(stripeOptions);
     // Execute the callback after the data us fetched.
-    options.callback(data);
+    options.callback(fetchResult);
   }
 };

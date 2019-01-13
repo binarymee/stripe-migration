@@ -54,7 +54,6 @@ module.exports = async () => {
       type: 'plans',
       callback: (sourcePlans) => migratePricingPlans(sourcePlans),
     });
-    
   } catch (err) {
     console.log('Error while migrating pricing plans', err);
   }
