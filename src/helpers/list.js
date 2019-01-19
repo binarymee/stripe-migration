@@ -7,7 +7,7 @@
  *  @param {function} options.callback - Required. Callback to be executed on every fetch.
  */
 module.exports.all = async (stripe, options = {}) => {
-  if (options.type || options.callback) {
+  if (!options.type || !options.callback) {
     throw new Error('Please pass the necessary options for list.all');
   }
   let fetchResult = { has_more: true };
