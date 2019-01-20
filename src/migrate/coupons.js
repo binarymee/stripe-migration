@@ -7,7 +7,7 @@ const list = require('./../helpers/list');
 /** @funtion migrateCoupons
  *  Migrate coupons from the source stripe account to the destination.
  */
-const migrateCoupons = async () => {
+const migrateCoupons = async (coupons) => {
   // Only if the coupons are available in source Stripe
   if (coupons.data && coupons.data.length > 0) {
     // Loop all the coupons
